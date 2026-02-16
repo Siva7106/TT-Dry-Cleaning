@@ -2,17 +2,13 @@
 
 ## Project info
 
-**URL**: https://ttdryclean.com
-
-**Note**: This is a TT Dry Clean project.
+**Note**: This is a Dry Clean project.
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
 **Use TT Dry Clean**
-
-Simply visit the [TT Dry Clean Project](https://ttdryclean.com) and start prompting.
 
 Changes made via TT Dry Clean will be committed automatically to this repo.
 
