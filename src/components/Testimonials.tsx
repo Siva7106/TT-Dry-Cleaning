@@ -5,13 +5,13 @@ const testimonials = [
   {
     name: "Siva",
     role: "Regular Customer",
-    text: "TT Dry Clean has been a lifesaver! Their pickup service is so convenient, and my clothes always come back looking brand new.",
+    text: "TT Dry Cleaning has been a lifesaver! Their pickup service is so convenient, and my clothes always come back looking brand new.",
     rating: 5,
   },
   {
     name: "Sundar",
     role: "Business Professional",
-    text: "I trust TT Dry Clean with all my suits and formal wear. The quality is consistently outstanding, and the turnaround time is impressive.",
+    text: "I trust TT Dry Cleaning with all my suits and formal wear. The quality is consistently outstanding, and the turnaround time is impressive.",
     rating: 5,
   },
   {

@@ -36,7 +36,7 @@ const Location = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="TT Dry Clean Location"
+              title="TT Dry Cleaning Location"
             />
           </motion.div>
 

@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-background/10 pt-8 text-center text-background/40 text-sm">
-          © {new Date().getFullYear()} TT Dry Clean. All rights reserved.
+          © {new Date().getFullYear()} TT Dry Cleaning. All rights reserved.
         </div>
       </div>
     </footer>

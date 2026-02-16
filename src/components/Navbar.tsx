@@ -26,7 +26,7 @@ const Navbar = () => {
         <a href="#" className="flex items-center gap-2">
           <Sparkles className="h-7 w-7 text-primary" />
           <span className="font-display text-2xl font-bold text-foreground">
-            TT<span className="text-primary">Dry Clean</span>
+            TT<span className="text-primary">Dry Cleaning</span>
           </span>
         </a>
 

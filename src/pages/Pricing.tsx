@@ -283,7 +283,7 @@ const Pricing = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Ready for <span className="gradient-text">Spotless</span> Clothes?
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto mb-8 text-lg">Schedule a free pickup today and experience the TT Dry Clean difference.</p>
+          <p className="text-muted-foreground max-w-lg mx-auto mb-8 text-lg">Schedule a free pickup today and experience the TT Dry Cleaning difference.</p>
           <Button variant="hero" size="lg" className="px-10 py-6 text-lg" asChild>
             <a href="/#booking">Schedule Pickup</a>
           </Button>
