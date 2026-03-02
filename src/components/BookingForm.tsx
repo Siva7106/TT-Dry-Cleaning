@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
-import { CalendarIcon, Clock, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
+import { CalendarIcon, Clock, MapPin, ArrowRight, CheckCircle2, Plus, Minus } from "lucide-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -58,6 +58,7 @@ const bookingSchema = z.object({
   timeSlot: z.string().min(1, "Please select a time slot"),
   address: z.string().trim().min(5, "Please enter your full address").max(300),
   notes: z.string().max(500).optional(),
+  clothQuantity: z.number().min(0, "Number of cloths must be 0 or more").max(50, "Maximum 50 cloths allowed"),
 });
 
 type BookingFormValues = z.infer<typeof bookingSchema>;
@@ -72,17 +73,43 @@ const BookingForm = () => {
       name: "",
       phone: "",
       service: "",
+      date: undefined,
       timeSlot: "",
       address: "",
       notes: "",
+      clothQuantity: 0,
     },
   });
 
   const onSubmit = (data: BookingFormValues) => {
     setSubmitted(true);
+    
+    // Format booking details for WhatsApp message
+    const bookingDetails = `🧺 *TT Dry Cleaning - New Booking Request* 🧺
+
+📋 *Booking Details:*
+• Name: ${data.name}
+• Phone: ${data.phone}
+• Service: ${data.service}
+• Pickup Date: ${data.date ? format(data.date, "PPP") : "Not selected"}
+• Time Slot: ${data.timeSlot}
+• Pickup Address: ${data.address}
+• Number of Cloths: ${data.clothQuantity || 0}
+${data.notes ? `• Special Instructions: ${data.notes}` : ""}
+
+📞 *Please confirm this booking and provide pickup details. Thank you!*
+
+*Sent via TT Dry Cleaning Website*`;
+
+    // Create WhatsApp URL with booking details
+    const whatsappUrl = `https://wa.me/+919876543210?text=${encodeURIComponent(bookingDetails)}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Pickup Scheduled!",
-      description: `We'll pick up your ${data.service} order on ${format(data.date, "PPP")} between ${data.timeSlot}.`,
+      title: "Opening WhatsApp...",
+      description: "Your booking details are being sent to our team.",
     });
   };
 
@@ -165,19 +192,72 @@ const BookingForm = () => {
                   name="service"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Service Type</FormLabel>
+                      <FormLabel>Select Service</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a service" />
+                            <Clock className="mr-2 h-4 w-4 opacity-50" />
+                            <SelectValue placeholder="Select service" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {services.map((s) => (
-                            <SelectItem key={s} value={s}>{s}</SelectItem>
+                          {services.map((service) => (
+                            <SelectItem key={service} value={service}>{service}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Cloth Quantity Picker */}
+                <FormField
+                  control={form.control}
+                  name="clothQuantity"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Number of Cloths</FormLabel>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const currentValue = field.value || 0;
+                            if (currentValue > 0) {
+                              field.onChange(currentValue - 1);
+                            }
+                          }}
+                          className="h-8 w-8"
+                        >
+                          <Minus className="h-4 w-4" />
+                        </Button>
+                        <div className="flex-1">
+                          <Input
+                            type="number"
+                            min="0"
+                            max="50"
+                            placeholder="0"
+                            className="text-center"
+                            {...field}
+                          />
+                        </div>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const currentValue = field.value || 0;
+                            if (currentValue < 50) {
+                              field.onChange(currentValue + 1);
+                            }
+                          }}
+                          className="h-8 w-8"
+                        >
+                          <Plus className="h-4 w-4" />
+                        </Button>
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -279,7 +359,7 @@ const BookingForm = () => {
                 />
 
                 <Button variant="hero" size="lg" type="submit" className="w-full py-6 text-lg">
-                  Confirm Pickup
+                  Send to WhatsApp
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </form>

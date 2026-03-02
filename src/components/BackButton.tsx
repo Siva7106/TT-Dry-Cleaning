@@ -1,36 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 
 interface BackButtonProps {
-  className?: string;
-  variant?: "default" | "outline" | "ghost" | "secondary";
+  to: string;
+  label?: string;
 }
 
-const BackButton = ({ className = "", variant = "outline" }: BackButtonProps) => {
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate("/");
-  };
-
+const BackButton = ({ to, label = "Back" }: BackButtonProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3 }}
-      className={`mb-6 ${className}`}
-    >
-      <Button
-        onClick={handleBack}
-        variant={variant}
-        className="flex items-center gap-2"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back to Home
-      </Button>
-    </motion.div>
+    <div className="container mx-auto px-4 py-4 mt-20">
+      <Link to={to}>
+        <Button variant="outline" className="flex items-center gap-2">
+          <ArrowLeft className="h-4 w-4" />
+          {label}
+        </Button>
+      </Link>
+    </div>
   );
 };
 

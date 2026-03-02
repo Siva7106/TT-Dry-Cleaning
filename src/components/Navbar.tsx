@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Services", href: "/services" },
-  { label: "Pickup & Drop", href: "#pickup" },
-  { label: "Track Order", href: "/track" },
   { label: "Location", href: "#location" },
   { label: "Testimonials", href: "#testimonials" },
 ];
@@ -51,6 +49,9 @@ const Navbar = () => {
               </a>
             )
           )}
+          <Button variant="hero" size="lg" asChild>
+            <a href="tel:+919876543210">Schedule Pickup</a>
+          </Button>
         </div>
 
         {/* Mobile toggle */}
@@ -94,7 +95,7 @@ const Navbar = () => {
                 )
               )}
               <Button variant="hero" size="lg" className="w-full" asChild>
-                <a href="#booking">Book Now</a>
+                <a href="tel:+919876543210">Schedule Pickup</a>
               </Button>
             </div>
           </motion.div>

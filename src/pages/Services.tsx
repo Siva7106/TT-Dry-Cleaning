@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackButton from "@/components/BackButton";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const serviceCategories = [
   {
@@ -224,9 +225,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <BackButton />
-      </div>
+      <BackButton to="/" label="Back to Home" />
       
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
@@ -357,6 +356,7 @@ const Services = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
