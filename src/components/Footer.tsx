@@ -51,7 +51,7 @@ const Footer = () => {
               <li>No:31, Ponniyamman Koil St, </li>
               <li>Govindappa Nagar, Porur,</li>
               <li>Chennai 600116</li>
-              <li>+1 (555) 123-4567</li>
+              <li>+91 9841871508</li>
               <li>hello@ttdryclean.com</li>
             </ul>
           </div>

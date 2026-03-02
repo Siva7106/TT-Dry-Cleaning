@@ -61,7 +61,7 @@ const Location = () => {
               {
                 icon: Phone,
                 title: "Phone",
-                details: ["+91 9999999999", "+91 9999999999"],
+                details: ["+91 9841871508"],
               },
               {
                 icon: Mail,

@@ -5,9 +5,9 @@ import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "/services" },
   { label: "Pickup & Drop", href: "#pickup" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Track Order", href: "/track" },
   { label: "Location", href: "#location" },
   { label: "Testimonials", href: "#testimonials" },
 ];
@@ -51,9 +51,6 @@ const Navbar = () => {
               </a>
             )
           )}
-          <Button variant="hero" size="lg" asChild>
-            <a href="#booking">Book Now</a>
-          </Button>
         </div>
 
         {/* Mobile toggle */}
