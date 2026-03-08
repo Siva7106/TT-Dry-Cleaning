@@ -1,28 +1,7 @@
 # Welcome to your TT Dry Cleaning project
 
 ## Project info
-
-<<<<<<< HEAD
-**URL**: https://ttdryclean.com
-
-**Note**: This is a TT Dry Cleaning project.
-=======
 **Note**: This is a Dry Clean project.
->>>>>>> d1c0662683f2071fc24e9d38e78d34bfb9201698
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use TT Dry Cleaning**
-
-<<<<<<< HEAD
-Simply visit the [TT Dry Cleaning Project](https://ttdryclean.com) and start prompting.
-
-Changes made via TT Dry Cleaning will be committed automatically to this repo.
-=======
-Changes made via TT Dry Clean will be committed automatically to this repo.
->>>>>>> d1c0662683f2071fc24e9d38e78d34bfb9201698
 
 **Use your preferred IDE**
 
@@ -32,7 +11,6 @@ The only requirement is having Node.js & npm installed - [install with nvm](http
 
 Follow these steps:
 
-```sh
 # Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
 
