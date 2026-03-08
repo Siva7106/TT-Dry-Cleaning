@@ -60,8 +60,15 @@ const cardVariants = {
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* Background Images */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-20 right-20 w-72 h-72 bg-secondary/5 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-accent/5 rounded-full blur-3xl opacity-50" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,14 +95,19 @@ const Services = () => {
             <motion.div
               key={service.title}
               variants={cardVariants}
-              className="group glass-card rounded-2xl p-6 hover-lift cursor-pointer"
+              className="group glass-card rounded-2xl p-6 hover-lift cursor-pointer relative overflow-hidden"
             >
-              <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className="h-7 w-7" />
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-50" />
+              
+              <div className="relative z-10">
+                <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <service.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
+                <div className="text-primary font-bold text-lg">{service.price}</div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
-              <div className="text-primary font-bold text-lg">{service.price}</div>
             </motion.div>
           ))}
         </motion.div>

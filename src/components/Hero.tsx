@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -42,12 +43,11 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Button variant="hero" size="lg" className="px-8 py-6 text-lg">
-              Schedule Pickup
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button variant="hero" size="lg" className="px-8 py-6 text-lg" asChild>
+              <a href="tel:+919876543210">Schedule Pickup</a>
             </Button>
-            <Button variant="heroOutline" size="lg" className="px-8 py-6 text-lg">
-              View Services
+            <Button variant="heroOutline" size="lg" className="px-8 py-6 text-lg" asChild>
+              <Link to="/services">View Services</Link>
             </Button>
           </div>
 

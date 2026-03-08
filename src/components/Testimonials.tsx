@@ -15,9 +15,21 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Dolu bolu",
+    name: "Ravi",
     role: "Loyal Customer",
     text: "The stain removal service is magical! They got out a red wine stain I thought was permanent. Absolutely recommend them.",
+    rating: 5,
+  },
+  {
+    name: "Priya",
+    role: "Regular Customer",
+    text: "TT Dry Cleaning is my go-to for all my clothing needs. The quality is excellent and the service is always prompt.",
+    rating: 5,
+  },
+  {
+    name: "Bharath",
+    role: "Business Owner",
+    text: "As a business owner, I need my uniforms and work clothes cleaned quickly and professionally. TT Dry Cleaning delivers every time.",
     rating: 5,
   },
 ];

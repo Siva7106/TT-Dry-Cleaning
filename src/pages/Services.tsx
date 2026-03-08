@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, Filter, Sparkles, Crown, Zap, Shirt, Package, Droplets, Wind, Shield } from "lucide-react";
+import { Search, Filter, Sparkles, Shirt, Package, Droplets, Wind, Shield } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -59,34 +59,26 @@ const services = [
     category: "laundry",
     name: "KG Wash",
     description: "Professional washing by weight for bulk laundry",
-    standardPrice: "₹29.99/kg",
-    premiumPrice: "₹39.99/kg",
-    expressPrice: "₹49.99/kg",
+    price: "₹29.99/kg",
     popular: true
   },
   {
     category: "laundry",
     name: "Wash & Iron",
     description: "Complete wash and iron service",
-    standardPrice: "₹8.99/piece",
-    premiumPrice: "₹12.99/piece",
-    expressPrice: "₹16.99/piece"
+    price: "₹8.99/piece"
   },
   {
     category: "laundry",
     name: "Steam Ironing",
     description: "Professional steam ironing service",
-    standardPrice: "₹5.99/piece",
-    premiumPrice: "₹8.99/piece",
-    expressPrice: "₹11.99/piece"
+    price: "₹5.99/piece"
   },
   {
     category: "laundry",
     name: "Student Washing",
     description: "Special rates for students",
-    standardPrice: "₹19.99/kg",
-    premiumPrice: "₹24.99/kg",
-    expressPrice: "₹34.99/kg"
+    price: "₹19.99/kg"
   },
 
   // Dry Cleaning Services
@@ -94,34 +86,26 @@ const services = [
     category: "dry-cleaning",
     name: "Sarees",
     description: "Delicate saree dry cleaning",
-    standardPrice: "₹149.99",
-    premiumPrice: "₹199.99",
-    expressPrice: "₹249.99",
+    price: "₹149.99",
     popular: true
   },
   {
     category: "dry-cleaning",
     name: "Suits",
     description: "Professional suit dry cleaning",
-    standardPrice: "₹89.99",
-    premiumPrice: "₹129.99",
-    expressPrice: "₹169.99"
+    price: "₹89.99"
   },
   {
     category: "dry-cleaning",
     name: "Silk Clothes",
     description: "Specialized silk garment cleaning",
-    standardPrice: "₹79.99",
-    premiumPrice: "₹109.99",
-    expressPrice: "₹139.99"
+    price: "₹79.99"
   },
   {
     category: "dry-cleaning",
     name: "Children Clothes",
     description: "Gentle cleaning for kids' garments",
-    standardPrice: "₹39.99",
-    premiumPrice: "₹54.99",
-    expressPrice: "₹69.99"
+    price: "₹39.99"
   },
 
   // Home & Bulk Cleaning Services
@@ -129,33 +113,25 @@ const services = [
     category: "home-bulk",
     name: "Bed Sheets",
     description: "Complete bed sheet cleaning service",
-    standardPrice: "₹24.99/set",
-    premiumPrice: "₹34.99/set",
-    expressPrice: "₹44.99/set"
+    price: "₹24.99/set"
   },
   {
     category: "home-bulk",
     name: "Blankets",
     description: "Professional blanket cleaning",
-    standardPrice: "₹49.99",
-    premiumPrice: "₹69.99",
-    expressPrice: "₹89.99"
+    price: "₹49.99"
   },
   {
     category: "home-bulk",
     name: "Carpets",
     description: "Deep carpet cleaning service",
-    standardPrice: "₹199.99",
-    premiumPrice: "₹299.99",
-    expressPrice: "₹399.99"
+    price: "₹199.99"
   },
   {
     category: "home-bulk",
     name: "Sofa",
     description: "Complete sofa cleaning and sanitization",
-    standardPrice: "₹299.99",
-    premiumPrice: "₹449.99",
-    expressPrice: "₹599.99"
+    price: "₹299.99"
   },
 
   // Extra Services
@@ -163,25 +139,19 @@ const services = [
     category: "extra-services",
     name: "Stain Removal",
     description: "Specialized stain treatment",
-    standardPrice: "₹19.99",
-    premiumPrice: "₹29.99",
-    expressPrice: "₹39.99"
+    price: "₹19.99"
   },
   {
     category: "extra-services",
     name: "Bleaching",
     description: "Professional bleaching service",
-    standardPrice: "₹14.99",
-    premiumPrice: "₹19.99",
-    expressPrice: "₹29.99"
+    price: "₹14.99"
   },
   {
     category: "extra-services",
     name: "Darning",
     description: "Clothing repair and mending",
-    standardPrice: "₹24.99",
-    premiumPrice: "₹34.99",
-    expressPrice: "₹44.99"
+    price: "₹24.99"
   },
 
   // Ironing Types
@@ -189,25 +159,19 @@ const services = [
     category: "ironing",
     name: "EB Ironing",
     description: "Electric box ironing service",
-    standardPrice: "₹4.99/piece",
-    premiumPrice: "₹6.99/piece",
-    expressPrice: "₹9.99/piece"
+    price: "₹4.99/piece"
   },
   {
     category: "ironing",
     name: "Gas Ironing",
     description: "Gas ironing for delicate fabrics",
-    standardPrice: "₹6.99/piece",
-    premiumPrice: "₹8.99/piece",
-    expressPrice: "₹11.99/piece"
+    price: "₹6.99/piece"
   },
   {
     category: "ironing",
     name: "Coal Ironing",
     description: "Traditional coal ironing service",
-    standardPrice: "₹3.99/piece",
-    premiumPrice: "₹5.99/piece",
-    expressPrice: "₹7.99/piece"
+    price: "₹3.99/piece"
   }
 ];
 
@@ -221,6 +185,12 @@ const Services = () => {
                          service.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const handleBookService = (serviceName: string, servicePrice: string) => {
+    const message = encodeURIComponent(`Hi! I'm interested in booking the "${serviceName}" service from TT Dry Cleaning. The price is ${servicePrice}. Can you help me with scheduling?`);
+    const whatsappUrl = `https://wa.me/+919876543210?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -318,29 +288,17 @@ const Services = () => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <Sparkles className="h-4 w-4 text-blue-500" />
-                      <span className="text-sm font-medium">Standard</span>
+                      <span className="text-sm font-medium">Price</span>
                     </div>
-                    <span className="font-bold text-lg">{service.standardPrice}</span>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <Crown className="h-4 w-4 text-purple-500" />
-                      <span className="text-sm font-medium">Premium</span>
-                    </div>
-                    <span className="font-bold text-lg">{service.premiumPrice}</span>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <Zap className="h-4 w-4 text-orange-500" />
-                      <span className="text-sm font-medium">Express</span>
-                    </div>
-                    <span className="font-bold text-lg">{service.expressPrice}</span>
+                    <span className="font-bold text-lg">{service.price}</span>
                   </div>
                 </div>
 
-                <Button className="w-full mt-6" variant="outline">
+                <Button 
+                  className="w-full mt-6" 
+                  variant="outline"
+                  onClick={() => handleBookService(service.name, service.price)}
+                >
                   Book This Service
                 </Button>
               </motion.div>
